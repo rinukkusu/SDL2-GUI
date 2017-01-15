@@ -1,2 +1,2 @@
-language: csharp
+language: cpp
 solution: SDL2-GUI/SDL2-GUI.sln
