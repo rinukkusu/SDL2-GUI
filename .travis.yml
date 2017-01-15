@@ -1,4 +1,3 @@
 language: csharp
 solution: SDL2-GUI/SDL2-GUI.sln
-mono:
-  -latest
+os: windows
