@@ -1,2 +1,4 @@
 language: cpp
 solution: SDL2-GUI/SDL2-GUI.sln
+script:
+	cmake && make
