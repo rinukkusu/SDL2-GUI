@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#include "TextBasedComponent.hpp"
+#include "../../include/components/TextBasedComponent.hpp"
 
 namespace sdl2gui
 {

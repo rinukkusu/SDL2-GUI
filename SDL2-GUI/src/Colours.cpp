@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#include "Colours.hpp"
+#include "../include/Colours.hpp"
 
 SDL_Colour * createSDL_Colour(int r, int g, int b, int a)
 {

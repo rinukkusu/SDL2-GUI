@@ -50,7 +50,7 @@ unsigned int setToNull(unsigned int interval, void *parameters)
 
 class EventHandler : public sdl2gui::component::SDLEventHandler
 {
-	bool SDLEventHandler::handleEvent(SDL_Event &sdlEvent)
+	bool handleEvent(SDL_Event &sdlEvent)
 	{
 		if (sdlEvent.button.button == SDL_BUTTON_LEFT)
 		{

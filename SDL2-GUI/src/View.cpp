@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#include "View.hpp"
+#include "../include/View.hpp"
 
 namespace sdl2gui
 {
@@ -32,9 +32,9 @@ namespace sdl2gui
 		if (this->font == NULL)
 		{
 			auto err = TTF_GetError();
-			printf_s("Could not load font from %s.", path->c_str());
-			printf_s(err);
-			throw std::exception("Could not load font.");
+			sprintf("Could not load font from %s.\n", path->c_str());
+			sprintf("%s\n", err);
+			throw Exception("Could not load font.");
 		}
 	}
 

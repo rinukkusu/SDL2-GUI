@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#include "Container.hpp"
+#include "../../include/components/Container.hpp"
 
 namespace sdl2gui
 {

@@ -38,7 +38,6 @@ namespace sdl2gui
 			public:
 			TextLabel(std::string *text);
 			void render(View *parent, SDL_Rect &sdlRect);
-			~TextLabel();
 		};
 	}
 }

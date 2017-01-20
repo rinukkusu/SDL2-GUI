@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#include "GraphicUserInterfaceView.hpp"
+#include "../include/GraphicUserInterfaceView.hpp"
 
 namespace sdl2gui
 {

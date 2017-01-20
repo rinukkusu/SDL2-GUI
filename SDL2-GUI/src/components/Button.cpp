@@ -16,42 +16,46 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#include "TextLabel.hpp"
+#include "../../include/components/Button.hpp"
 
 namespace sdl2gui
 {
 	namespace component
 	{
-		TextLabel::TextLabel(std::string *text) : TextBasedComponent(text)
+		Button::Button(std::string *text) : TextBasedComponent(text)
 		{
-			this->renderedTextRect = new SDL_Rect();
 		}
 
-		void TextLabel::render(View *parent, SDL_Rect &sdlRect)
+		void Button::render(View *parent, SDL_Rect &sdlRect)
 		{
 			this->doBaseRendering(parent, sdlRect);
-
 			if (this->getRenderedText() == NULL)
 				this->renderText(parent);
 
 			unsigned int format = 0;
 			int access = 0;
 			int width = 0;
-			int height = 0;
+			int height = 0;;
 
 			SDL_QueryTexture(this->getRenderedText(), &format, &access, &width, &height);
 
-			this->renderedTextRect->x = (sdlRect.x + (sdlRect.w / 2)) - (width / 2);
-			this->renderedTextRect->y = (sdlRect.y + (sdlRect.h / 2)) - (height / 2);
-			this->renderedTextRect->w = width;
-			this->renderedTextRect->h = height;
+			SDL_Rect *renderedTextRect = new SDL_Rect();
+			renderedTextRect->x = (sdlRect.x + (sdlRect.w / 2)) - (width / 2);
+			renderedTextRect->y = (sdlRect.y + (sdlRect.h / 2)) - (height / 2);
+			renderedTextRect->w = width;
+			renderedTextRect->h = height;
 
-			SDL_RenderCopy(parent->getSDLRenderer(), this->getRenderedText(), 0, this->renderedTextRect);
+			SDL_RenderCopy(parent->getSDLRenderer(), this->getRenderedText(), 0, renderedTextRect);
+
+			delete renderedTextRect;
 		}
 
-		TextLabel::~TextLabel()
+		bool Button::onSDLEvent(SDL_Event &sdlEvent)
 		{
-			TextBasedComponent::~TextBasedComponent();
+			if (sdlEvent.type == SDL_MOUSEBUTTONDOWN)
+				return this->handleEvent(sdlEvent);
+			else
+				return false;
 		}
 	}
 }

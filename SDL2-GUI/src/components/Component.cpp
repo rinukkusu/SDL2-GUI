@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#include "Component.hpp"
+#include "../../include/components/Component.hpp"
 
 namespace sdl2gui
 {

@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#include "Point.hpp" 
+#include "../include/Point.hpp" 
 
 namespace sdl2gui
 {

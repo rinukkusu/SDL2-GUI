@@ -16,12 +16,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#include "Spinner.hpp" 
+#ifndef VIEW__HPP
+#define VIEW__HPP
+
+#define DEFAULT_FONT "Roboto-Medium.ttf"
+
+#include <string>
+
+#include <SDL.h>
+
+#include <SDL_ttf.h>
+
+#include "Exception.hpp"
 
 namespace sdl2gui
 {
-	namespace component
+	class View
 	{
+		protected:
+		SDL_Renderer *sdlRenderer;
+		SDL_Window *sdlWindow;
+		TTF_Font *font;
 
-	}
+		public:
+		View(SDL_Window *sdlWindow);
+		virtual void render() = 0;
+		virtual SDL_Renderer * getSDLRenderer();
+		virtual bool onSDLEvent(SDL_Event &sdlEvent) = 0;
+		virtual TTF_Font * getFont();
+		virtual int getSizeX();
+		virtual int getSizeY();
+	};
 }
+
+#endif

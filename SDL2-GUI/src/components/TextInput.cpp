@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#include "TextInput.hpp" 
+#include "../../include/components/TextInput.hpp" 
 
 namespace sdl2gui
 {

@@ -16,30 +16,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#ifndef COMP_BUTTON__HPP
-#define COMP_BUTTON__HPP
-
-#include <string>
-
-#include <SDL_ttf.h>
-
-#include "Component.hpp"
-#include "TextBasedComponent.hpp"
-#include "ClickableComponent.hpp"
+#include "../../include/components/ImageLabel.hpp" 
 
 namespace sdl2gui
 {
 	namespace component
 	{
-		class Button : public Component, public TextBasedComponent, public ClickableComponent
+		ImageLabel::ImageLabel(SDL_Texture *imageTexture, SDL_Rect *imageSourceRectangle)
 		{
-			public:
-			Button(std::string *text);
-			void render(View *parent, SDL_Rect &sdlRect);
-			bool onSDLEvent(SDL_Event &sdlEvent);
-			~Button();
-		};
+			this->imageTexture = imageTexture;
+			this->imageSourceRectangle = imageSourceRectangle;
+			this->imageTargetRectangle = new SDL_Rect();
+		}
+
+		void ImageLabel::render(View *parent, SDL_Rect &sdlRect)
+		{
+			this->doBaseRendering(parent, sdlRect);
+
+			this->imageTargetRectangle->x = sdlRect.x + 1;
+			this->imageTargetRectangle->y = sdlRect.y + 1;
+			this->imageTargetRectangle->w = sdlRect.w - 2;
+			this->imageTargetRectangle->h = sdlRect.h - 2;
+
+			SDL_RenderCopy(parent->getSDLRenderer(), this->imageTexture, this->imageSourceRectangle, this->imageTargetRectangle);
+		}
+
+		bool ImageLabel::onSDLEvent(SDL_Event &sdlEvent)
+		{
+			return true;
+		}
 	}
 }
-
-#endif

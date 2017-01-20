@@ -16,34 +16,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#include "ClickableComponent.hpp" 
+#include "../../include/components/Spinner.hpp" 
 
 namespace sdl2gui
 {
 	namespace component
 	{
-		ClickableComponent::ClickableComponent()
-		{
-			this->eventHandlers = new std::vector<SDLEventHandler *>();
-		}
 
-		void ClickableComponent::addEventHandler(SDLEventHandler *sdlEventHandler)
-		{
-			this->eventHandlers->push_back(sdlEventHandler);
-		}
-
-		bool ClickableComponent::handleEvent(SDL_Event &sdlEvent)
-		{
-			auto iEventHandler = this->eventHandlers->begin();
-			auto iEnd = this->eventHandlers->end();
-
-			bool result = false;
-			for (; iEventHandler != iEnd; iEventHandler++)
-			{
-				result |= ((*iEventHandler)->handleEvent(sdlEvent));
-			}
-
-			return result;
-		}
 	}
 }
