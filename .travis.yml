@@ -4,7 +4,7 @@ sudo: required
 
 before_install:
     - sudo apt-get -qq update
-    - sudo apt-get -y install libsdl-ttf2.0-0 libsdl2-ttf2.0-dev 
+    - sudo apt-get -y install libsdl-ttf2* 
 
 script: 
     mkdir build && cd build && cmake .. && make VERBOSE=1 && cd ..
