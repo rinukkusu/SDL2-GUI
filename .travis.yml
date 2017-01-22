@@ -4,9 +4,9 @@ sudo: required
 before_install:
     - sudo add-apt-repository -y ppa:team-xbmc/ppa -y
     - sudo apt-get -qq update
-    - sudo apt-get install libsdl2-dev libsdl-ttf* 7z
-    - wget https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.14.zip
-    - 7za x SDL2_ttf-2.0.14.zip
+    - sudo apt-get install libsdl2-dev libsdl-ttf*
+    - wget https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.14.tar.gz
+    - tar xfv SDL2_ttf-2.0.14.tar.gz
     - cd SDL2_ttf-2.0.14    
     - ./configure
     - make  
