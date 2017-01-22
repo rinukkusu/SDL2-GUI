@@ -1,17 +1,21 @@
 language: cpp
 sudo: required
-
 before_install:
-    - sudo add-apt-repository -y ppa:team-xbmc/ppa -y
-    - sudo apt-get -qq update
-    - sudo apt-get install libsdl2-dev libsdl-ttf*
-    - wget https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.14.tar.gz
-    - tar xfv SDL2_ttf-2.0.14.tar.gz
-    - cd SDL2_ttf-2.0.14    
-    - ./configure
-    - make  
-    - sudo make install
-    - cd ..
-
-script: 
-    mkdir build && cd build && cmake .. && make VERBOSE=1 && cd ..
+- sudo add-apt-repository -y ppa:team-xbmc/ppa -y
+- sudo apt-get -qq update
+- sudo apt-get install libsdl2-dev libsdl-ttf*
+- wget https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.14.tar.gz
+- tar xfv SDL2_ttf-2.0.14.tar.gz
+- cd SDL2_ttf-2.0.14
+- "./configure"
+- make
+- sudo make install
+- cd ..
+script: mkdir build && cd build && cmake .. && make VERBOSE=1 && cd ..
+deploy:
+  provider: releases
+  api_key:
+    secure: b0PzjpoFMF2zcglChdbuq1ueJCZOt4oAZQpIqJtxAdyo5A31SUV/kIofDhl0QUyrYVojiuZfRHbZaVZpr5Jyib06tkJCRoNk6gsaLUBRG5uBJQz3odsjgAzyVY4PEHBsm+PZp0VOPXI8sJtt8MUm+6Q0u5OlusCJELZd9UHMh4yNTqDAwZwnjd+btNB+1DOyt/Eim2ovLSJoNU9scFSmW3xhSS/TMgmGCibxibzqRn/RiuEil/39JgTZP9btbCjihtQ2lxGH8YZ+/ytxJlXVezv86/kTliKQ7VI/vHkLDHThA1nsZ+Dn7T1eTtdMNTrrvL/PQbyG7NOM6PpuzD7303s+i3I20rE+pWlIfq0rFP3t0NHd3UG3c9i+6oNrLdthnYcBxQFEK6jB3lwDEfEjISdxFF1idiqmiUCs3WtJx7ZWU4QMndMBTV060Um/R4pFvj5pSVaiN0KJauv5o3fKOKdTrwQnEgvgOAYSvT0dAfPQKmabTjzKDUiC4WHsroKVn0a5RbDfezlpYYYWjsd2hb3pqaOYuzKE5RXvnQ8rvJyx29m7s3YPam1b3MPuTevyNXtc6ntLRViSgtx4TWC77ZawWOcSTS2oY2fm9QIyjKQgnInKMt2kzfU34c37y9jhcNHhFia+8hqZPaFHcM7qMtFMe0B0TkbdIEWpIvI/w04=
+  file: build/SDL2-GUI/libSDL2-GUI.so
+  on:
+    repo: Shadow1Raven/SDL2-GUI
